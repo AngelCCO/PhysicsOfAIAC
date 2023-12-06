@@ -19,6 +19,11 @@ public class Shoot : MonoBehaviour
         
     }
 
+    void CanShootAgain()
+    {
+        canShoot = true;
+    }
+
     void Fire()
     {
         if (canShoot)
@@ -26,7 +31,7 @@ public class Shoot : MonoBehaviour
             GameObject shell = Instantiate(shellPrefab, shellSpawnPos.transform.position, shellSpawnPos.transform.rotation);
             shell.GetComponent<Rigidbody>().velocity = speed * this.transform.forward;
             canShoot = false;
-            Invoke("canShootAgain", 0.5f);
+            Invoke("CanShootAgain", 0.5f);
         }
     }
 
